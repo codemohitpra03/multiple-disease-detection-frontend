@@ -114,7 +114,7 @@ const Parkinson = () => {
                 onChange={formik.handleChange}
                 name={fieldName}
                 value={formik.values[fieldName]}
-                className='border-[2px] border-purple-600 rounded-md px-2 py-1 w-[70vw]'
+                className='border-[2px] border-purple-600 rounded-md px-2 py-1 w-[65vw]'
                 type='text'
                 placeholder={`Enter ${fieldName}`}
             />
@@ -127,7 +127,7 @@ const Parkinson = () => {
     return (
         <div className='h-[100vh] bg-gray-50 p-16 overflow-auto'>
             <div id="myNav" className="overlay h-full w-0 fixed z-10 left-0 top-0 overflow-x-hidden duration-500 bg-[rgb(0,0,0,0.99)]">
-                <a href={void(0)} className="closebtn absolute top-5 right-11 text-7xl text-white" onClick={closeNav} >&times;</a>
+                <a href={void(0)} className="cursor-pointer closebtn absolute top-5 right-11 text-7xl text-white" onClick={closeNav} >&times;</a>
                 <div className="overlay-content relative top-[25%] w-full flex justify-center items-center mt-7 text-white">
                     <ul className='space-y-5 my-5 pl-20'>
                         <p className='font-bold text-4xl'>Description of each field</p>

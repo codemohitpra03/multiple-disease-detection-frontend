@@ -7,14 +7,14 @@ const Diabetes = () => {
      // Change variable name to reflect diabetes prediction
     const formik = useFormik({
 		initialValues: {
-            pregnancies: "",
-            glucose: "",
-            bloodPressure: "",
-            skinThickness: "",
-            insulin: "",
-            BMI: "",
-            diabetesPedigreeFunction: "",
-            age: ""
+            pregnancies: "6",
+            glucose: "148",
+            bloodPressure: "72",
+            skinThickness: "35",
+            insulin: "0",
+            BMI: "33.6",
+            diabetesPedigreeFunction: "0.627",
+            age: "50"
         },
 		validationSchema: Yup.object({
 			pregnancies: Yup.string().required("str.string of times pregnant"),
@@ -161,7 +161,7 @@ const Diabetes = () => {
                 </div>
                 <div id='yes' className='bg-yellow-200 p-3 my-2 rounded-lg hidden'>
                 <p className='text-yellow-900'>
-                        Based on the prediction, it seems likely that the patient has diabetes. 😥 We recommend consulting a healthcare professional for further evaluation and treatment. 😷💊
+                        Based on the prediction, it seems likely that the patient has diabetes. 😥 <br /> We recommend consulting a healthcare professional for further evaluation and treatment. 😷💊
                     </p>
                 </div>
             </div>

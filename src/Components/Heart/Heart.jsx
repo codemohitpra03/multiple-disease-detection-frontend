@@ -7,20 +7,21 @@ const Heart = () => {
     
     
     const formik = useFormik({
+        // [60,1,0,130,253,0,1,144,1,1.4,2,1,3]
 		initialValues: {
-            age:"",
-            sex:"",
-            cp:"",
-            trestbps:"",
-            chol:"",
-            fbs:"",
-            restecg:"",
-            thalach:"",
-            exang:"",
-            oldpeak:"",
-            slope:"",
-            ca:"",
-            thal:""
+            age:"60",
+            sex:"1",
+            cp:"0",
+            trestbps:"130",
+            chol:"253",
+            fbs:"0",
+            restecg:"1",
+            thalach:"144",
+            exang:"1",
+            oldpeak:"1.4",
+            slope:"2",
+            ca:"1",
+            thal:"3"
         },
 		validationSchema: Yup.object({
 			age: Yup.string()
