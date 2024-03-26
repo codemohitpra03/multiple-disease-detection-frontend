@@ -37,8 +37,8 @@ const Diabetes = () => {
             for (let key in data) {
                 data[key] = convertToNumber(data[key]);
             }
-            console.log(data);
-            const response = await fetch("http://localhost:80/api/diabetes/",
+            // console.log(data);
+            const response = await fetch("http://multiple-disease-detection-env.eba-mdcr382y.ap-south-1.elasticbeanstalk.com/api/diabetes/",
             {
                 headers: {
                   'Accept': 'application/json',
@@ -52,7 +52,7 @@ const Diabetes = () => {
             })
 
             const json = await response.json();
-            console.log(json);
+            // console.log(json);
             
 
             if(json.result){
@@ -65,7 +65,7 @@ const Diabetes = () => {
             }
         }
 	})
-	console.log(formik.values);
+	// console.log(formik.values);
 	const isFormValid = formik.isValid && Object.keys(formik.touched).length > 0
 
     function openNav() {

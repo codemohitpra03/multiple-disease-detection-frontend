@@ -72,7 +72,7 @@ const Heart = () => {
                 data[key] = convertToNumber(data[key]);
             }
             // console.log(data);
-            const response = await fetch("http://localhost:80/api/heart/",
+            const response = await fetch("http://multiple-disease-detection-env.eba-mdcr382y.ap-south-1.elasticbeanstalk.com/api/heart/",
             {
                 headers: {
                   'Accept': 'application/json',

@@ -67,7 +67,7 @@ const Parkinson = () => {
                 data[key] = convertToNumber(data[key]);
             }
             // console.log(data);
-            const response = await fetch("http://localhost:80/api/parkinsons/",
+            const response = await fetch("http://multiple-disease-detection-env.eba-mdcr382y.ap-south-1.elasticbeanstalk.com/api/parkinsons/",
             {
                 headers: {
                   'Accept': 'application/json',
@@ -175,7 +175,7 @@ const Parkinson = () => {
                   {inputFields}
                 
                 </div>
-                <button id='btn' disabled={!isFormValid} style={{ color: `${isFormValid ? "white" : "gray"}`, background: `linear-gradient(90deg, rgba(207,5,189,${isFormValid ? "1" : "0.23"}) 0%, rgba(142,25,214,${isFormValid ? "1" : "0.23"}) 51%, rgba(216,0,219,${isFormValid ? "1" : "0.23"}) 100%)` }} className={`bg-[rgb(149,24,24,${isFormValid ? "1" : "0.23"})] md:w-[200px] flex justify-center items-center rounded-lg p-3 text-${isFormValid ? "white" : "[#c1c1c1]"} `}>
+                <button type='submit' id='btn' disabled={!isFormValid} style={{ color: `${isFormValid ? "white" : "gray"}`, background: `linear-gradient(90deg, rgba(207,5,189,${isFormValid ? "1" : "0.23"}) 0%, rgba(142,25,214,${isFormValid ? "1" : "0.23"}) 51%, rgba(216,0,219,${isFormValid ? "1" : "0.23"}) 100%)` }} className={`bg-[rgb(149,24,24,${isFormValid ? "1" : "0.23"})] md:w-[200px] flex justify-center items-center rounded-lg p-3 text-${isFormValid ? "white" : "[#c1c1c1]"} `}>
 					Predict Disease
                 </button>
             </form>
