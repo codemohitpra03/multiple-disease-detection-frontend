@@ -60,7 +60,7 @@ const Heart = () => {
 		}),
         onSubmit: async (values) => {
 			// alert("Form submitted for user - " + values.age + " " + values.sex)
-            
+            document.getElementById('loading').style.display = 'block';
             
             let data = values;
             function convertToNumber(value) {
@@ -88,7 +88,7 @@ const Heart = () => {
 
             const json = await response.json();
             // console.log(json);
-            
+            document.getElementById('loading').style.display = 'none';
 
             if(json.result){
                 document.getElementById("yes").style.display = "block"
@@ -232,7 +232,11 @@ const Heart = () => {
                 </button>
             </form>
             <div>
-                
+                <div id='loading' className='hidden bg-gray-200 my-2 w-[68vw] h-[80px] rounded-lg px-5 py-4 space-y-3'>
+                    <div className='w-[60vw] animate-pulse h-2 rounded-md bg-gray-500'></div>
+                    <div className='w-[50vw] animate-pulse h-2 rounded-md bg-gray-500'></div>
+                    <div className='w-[60vw] animate-pulse h-2 rounded-md bg-gray-500'></div>
+                </div>
                 <div id='no' className='bg-green-200 p-3 my-2 rounded-lg hidden'>
                     
                     <p className='text-green-900'>

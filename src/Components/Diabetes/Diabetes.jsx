@@ -27,6 +27,7 @@ const Diabetes = () => {
             age: Yup.string().required("Age of the patient (years)")
 		}),
         onSubmit: async(values) => {
+            document.getElementById('loading').style.display = 'block';
             let data = values;
             function convertToNumber(value) {
                 const parsedValue = parseFloat(value);
@@ -54,7 +55,7 @@ const Diabetes = () => {
             const json = await response.json();
             // console.log(json);
             
-
+            document.getElementById('loading').style.display = 'none';
             if(json.result){
                 document.getElementById("yes").style.display = "block"
                 document.getElementById("no").style.display = "none"
@@ -63,6 +64,7 @@ const Diabetes = () => {
                 document.getElementById("no").style.display = "block"
 
             }
+            formik.resetForm();
         }
 	})
 	// console.log(formik.values);
@@ -154,13 +156,18 @@ const Diabetes = () => {
                 </button>
             </form>
             <div>
+                <div id='loading' className='hidden bg-gray-200 my-2 w-[68vw] h-[80px] rounded-lg px-5 py-4 space-y-3'>
+                    <div className='w-[60vw] animate-pulse h-2 rounded-md bg-gray-500'></div>
+                    <div className='w-[50vw] animate-pulse h-2 rounded-md bg-gray-500'></div>
+                    <div className='w-[60vw] animate-pulse h-2 rounded-md bg-gray-500'></div>
+                </div>
                 <div id='no' className='bg-green-200 p-3 my-2 rounded-lg hidden'>
                     <p className='text-green-900'>
                         According to the prediction, it appears that the patient does not have diabetes. 😀 However, it's essential to maintain a healthy lifestyle and undergo regular check-ups to ensure overall well-being. 😊🤗
                     </p>
                 </div>
                 <div id='yes' className='bg-yellow-200 p-3 my-2 rounded-lg hidden'>
-                <p className='text-yellow-900'>
+                    <p className='text-yellow-900'>
                         Based on the prediction, it seems likely that the patient has diabetes. 😥 <br /> We recommend consulting a healthcare professional for further evaluation and treatment. 😷💊
                     </p>
                 </div>
