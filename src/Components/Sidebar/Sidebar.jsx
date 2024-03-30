@@ -53,7 +53,7 @@ const Sidebar = ({setter}) => {
 
       <div className=''>
         <p className='text-white'>Developed by - </p>
-        <a className='text-purple-100 font-bold' href='https://github.com/codemohitpra03' target='_blank'>@codemohitpra03🧑‍💻</a>
+        <a className='text-purple-100 underline font-bold' href='https://github.com/codemohitpra03' target='_blank'>@codemohitpra03🧑‍💻</a>
       </div>
     </div>
   )

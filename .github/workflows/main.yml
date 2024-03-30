@@ -8,38 +8,26 @@ on:
 
 jobs:
 
-  # build:
+  build:
 
-    # runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     
-    # steps:
-    # - uses: actions/checkout@v3
+    steps:
+    - uses: actions/checkout@v3
 
-    # - name: Get current date as version
-    #   id: date
-    #   run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+    - name: Get current date as version
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
       
         
       
-    # - name: Build the Docker image
-    #   run: | 
-    #     docker build . --file Dockerfile --tag codemohitpra2103/multiple-disease-detection-frontend:latest
-    #     echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_ID }} --password-stdin
-    #     docker push codemohitpra2103/multiple-disease-detection-frontend
+    - name: Build the Docker image
+      run: | 
+        docker build . --file Dockerfile --tag codemohitpra2103/multiple-disease-detection-frontend:latest
+        echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_ID }} --password-stdin
+        docker push codemohitpra2103/multiple-disease-detection-frontend
       # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-    # - name: Generate deployment package
-    #   run: zip -r deploy.zip . -x '*.git*'
-      
-    # - name: Deploy to EB
-    #   uses: einaregilsson/beanstalk-deploy@v22
-    #   with:
-    #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     application_name: multiple-disease-frontend
-    #     environment_name: Multiple-disease-frontend-env
-    #     version_label: ${{ steps.date.outputs.date }}
-    #     region: ap-south-1
-    #     deployment_package: deploy.zip
+    
   deploy:
     runs-on: ubuntu-latest
     # needs: build
