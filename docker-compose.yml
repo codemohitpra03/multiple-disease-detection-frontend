@@ -2,6 +2,8 @@
 services: 
   web:
     image: codemohitpra2103/multiple-disease-detection-frontend:latest
+    container_name: multiple-disease-detection-frontend
+    restart: always
     ports:
       - '80:3000'
     
