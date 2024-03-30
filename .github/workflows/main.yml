@@ -57,10 +57,11 @@ jobs:
           chmod 600 key.pem
       - name: Pull Docker image
         run: |
-          # ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker pull codemohitpra2103/multiple-disease-detection-frontend:latest'
+          
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
             echo "Connection established"
       # - name: Stop running container
+      # ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker pull codemohitpra2103/multiple-disease-detection-frontend:latest'
       #   run: |
       #     ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker stop multiple-disease-detection-frontend || true'
       #     ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker rm multiple-disease-detection-frontend || true'
