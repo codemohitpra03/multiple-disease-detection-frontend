@@ -52,14 +52,18 @@ jobs:
           username: ${{ secrets.DOCKER_ID }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Set permissions for private key
+        env:
+            PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+            HOSTNAME: ${{secrets.HOSTNAME}}
+            USER_NAME: ${{secrets.USER_NAME}}
         run: |
-          echo "${{ secrets.AWS_SECRET_ACCESS_KEY }}" > key.pem
-          chmod 600 key.pem
-      - name: Pull Docker image
-        run: |
-          # ssh -i key.pem ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
-          ssh -o StrictHostKeyChecking=no -i key ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
-            echo "Connection established"
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
+      # - name: Pull Docker image
+      #   run: |
+      #     # ssh -i key.pem ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
+      #     ssh -o StrictHostKeyChecking=no -i key ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
+      #       echo "Connection established"
       # - name: Stop running container
       # ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker pull codemohitpra2103/multiple-disease-detection-frontend:latest'
       #   run: |
