@@ -10,22 +10,22 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
     
-    steps:
-    - uses: actions/checkout@v3
+    # steps:
+    # - uses: actions/checkout@v3
 
-    - name: Get current date as version
-      id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+    # - name: Get current date as version
+    #   id: date
+    #   run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
       
         
       
-    - name: Build the Docker image
-      run: | 
-        docker build . --file Dockerfile --tag codemohitpra2103/multiple-disease-detection-frontend:latest
-        echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_ID }} --password-stdin
-        docker push codemohitpra2103/multiple-disease-detection-frontend
+    # - name: Build the Docker image
+    #   run: | 
+    #     docker build . --file Dockerfile --tag codemohitpra2103/multiple-disease-detection-frontend:latest
+    #     echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_ID }} --password-stdin
+    #     docker push codemohitpra2103/multiple-disease-detection-frontend
       # run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     # - name: Generate deployment package
     #   run: zip -r deploy.zip . -x '*.git*'
@@ -42,7 +42,7 @@ jobs:
     #     deployment_package: deploy.zip
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    # needs: build
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -58,7 +58,7 @@ jobs:
       - name: Pull Docker image
         run: |
           
-          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
+          ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
             echo "Connection established"
       # - name: Stop running container
       # ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker pull codemohitpra2103/multiple-disease-detection-frontend:latest'
