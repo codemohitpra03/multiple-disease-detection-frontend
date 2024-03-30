@@ -57,7 +57,7 @@ jobs:
           chmod 600 key.pem
       - name: Pull Docker image
         run: |
-          
+          ssh -i key.pem ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
           ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
             echo "Connection established"
       # - name: Stop running container
