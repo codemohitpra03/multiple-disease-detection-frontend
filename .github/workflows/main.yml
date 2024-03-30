@@ -59,16 +59,13 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
           ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
-      # - name: Pull Docker image
-      #   run: |
-      #     # ssh -i key.pem ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
-      #     ssh -o StrictHostKeyChecking=no -i key ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
-      #       echo "Connection established"
-      # - name: Stop running container
-      # ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker pull codemohitpra2103/multiple-disease-detection-frontend:latest'
-      #   run: |
-      #     ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker stop multiple-disease-detection-frontend || true'
-      #     ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker rm multiple-disease-detection-frontend || true'
-      # - name: Run new container
-      #   run: |
-      #     ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker run -d --name multiple-disease-detection-frontend -p 80:3000 codemohitpra2103/multiple-disease-detection-frontend:latest'
+      - name: Pull Docker image
+        run: |
+          ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} 'sudo docker pull codemohitpra2103/multiple-disease-detection-frontend:latest'
+      - name: Stop running container
+        run: |
+          ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} 'sudo docker stop multiple-disease-detection-frontend || true'
+          ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} 'sudo docker rm multiple-disease-detection-frontend || true'
+      - name: Run new container
+        run: |
+          ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} 'sudo docker run -d --name multiple-disease-detection-frontend -p 80:3000 codemohitpra2103/multiple-disease-detection-frontend:latest'
