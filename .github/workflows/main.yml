@@ -58,7 +58,7 @@ jobs:
       - name: Pull Docker image
         run: |
           ssh -i key.pem ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
-          ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
+          ssh -o StrictHostKeyChecking=no -i key ${{ secrets.USER_NAME }}@${{ secrets.HOSTNAME }}
             echo "Connection established"
       # - name: Stop running container
       # ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@172.31.12.3 'sudo docker pull codemohitpra2103/multiple-disease-detection-frontend:latest'
