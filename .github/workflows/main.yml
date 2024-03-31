@@ -56,4 +56,4 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} 'sudo docker rm multiple-disease-detection-frontend || true'
       - name: Run new container
         run: |
-          ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} 'sudo docker run -d --name multiple-disease-detection-frontend -p 80:3000 codemohitpra2103/multiple-disease-detection-frontend:latest'
+          ssh -o StrictHostKeyChecking=no -i private_key ${{secrets.USER_NAME}}@${{secrets.HOSTNAME}} 'sudo docker run -d --name multiple-disease-detection-frontend -p 443:3000 codemohitpra2103/multiple-disease-detection-frontend:latest'
